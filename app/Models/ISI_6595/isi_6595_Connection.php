@@ -1,0 +1,11 @@
+<?php
+
+namespace App\Models\ISI_6595;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class isi_6595_Connection extends Model
+{
+    use HasFactory;
+}
