@@ -295,10 +295,8 @@ $rMain = 2;
                         html += '<tr id="row' + {{ $data->fldRead }} + '">'
                             +'<td>' + {{ $data->fldRead }} + '</td>'
                             +'<td><input type="text" name="speed[]" required value="'+{{ $data->fldSpeed }}+'"></td>'
-                            +'<td><input type="text" name="vaccumGaugeReading[]" required value="'+{{ $data->fldVGauge }}+'">
-                            </td>'
-                            +'<td><input type="text" name="pressureGaugeReading[]" required value="'+{{ $data->fldPGauge }}+'">
-                            </td>'
+                            +'<td><input type="text" name="vaccumGaugeReading[]" required value="'+{{ $data->fldVGauge }}+'"></td>'
+                            +'<td><input type="text" name="pressureGaugeReading[]" required value="'+{{ $data->fldPGauge }}+'"></td>'
                             +'<td><input type="text" name="time[]" required value="'+{{ $data->fldTime }}+'"></td>'
                             +'<td><input type="text" name="voltage[]" required value="'+{{ $data->fldVolt }}+'"></td>'
                             +'<td><input type="text" name="current[]" required value="'+{{ $data->fldCurr }}+'"></td>'

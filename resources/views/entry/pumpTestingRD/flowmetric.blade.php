@@ -283,8 +283,7 @@ $rMain = 2;
                         htm += '<td>{{ $entries[$i]->fldRead }}</td>';
                         htm += '<td><input type="text" name="speed[]" value="{{ $entries[$i]->fldSpeed }}"></td>';
                         htm += '<td><input type="text" name="vaccumGaugeReading[]" value="{{ $entries[$i]->fldVGauge }}"></td>';
-                        htm += '<td><input type="text" name="pressureGaugeReading[]" value="{{ $entries[$i]->fldPGauge }}"></td>
-                        ';
+                        htm += '<td><input type="text" name="pressureGaugeReading[]" value="{{ $entries[$i]->fldPGauge }}"></td>';
                         htm += '<td><input type="text" name="discharge[]" value="{{ $entries[$i]->fldDis }}"></td>';
                         htm += '<td><input type="text" name="voltage[]" value="{{ $entries[$i]->fldVolt }}"></td>';
                         htm += '<td><input type="text" name="current[]" value="{{ $entries[$i]->fldCurr }}"></td>';
