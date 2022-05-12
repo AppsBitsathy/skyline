@@ -5,20 +5,11 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '9cd1bfbf3098976d909b37187d4f7d7f40e618d3',
+        'reference' => 'a3d4b337db2949bd67783500d27c26171d3fce8a',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
     'versions' => array(
-        'a1comms/php-gds' => array(
-            'pretty_version' => 'v4.2.7',
-            'version' => '4.2.7.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../a1comms/php-gds',
-            'aliases' => array(),
-            'reference' => 'a20339c0d215db42e9227baf9db3e7570e9a33d8',
-            'dev_requirement' => false,
-        ),
         'asm89/stack-cors' => array(
             'pretty_version' => 'v2.1.1',
             'version' => '2.1.1.0',
@@ -445,7 +436,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '9cd1bfbf3098976d909b37187d4f7d7f40e618d3',
+            'reference' => 'a3d4b337db2949bd67783500d27c26171d3fce8a',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(

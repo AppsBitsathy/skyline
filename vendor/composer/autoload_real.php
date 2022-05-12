@@ -22,15 +22,9 @@ class ComposerAutoloaderInit36e0fc8a7d06259f5c7bb178cf84ebb5
             return self::$loader;
         }
 
-        require __DIR__ . '/platform_check.php';
-
         spl_autoload_register(array('ComposerAutoloaderInit36e0fc8a7d06259f5c7bb178cf84ebb5', 'loadClassLoader'), true, true);
         self::$loader = $loader = new \Composer\Autoload\ClassLoader(\dirname(__DIR__));
         spl_autoload_unregister(array('ComposerAutoloaderInit36e0fc8a7d06259f5c7bb178cf84ebb5', 'loadClassLoader'));
-
-        $includePaths = require __DIR__ . '/include_paths.php';
-        $includePaths[] = get_include_path();
-        set_include_path(implode(PATH_SEPARATOR, $includePaths));
 
         require __DIR__ . '/autoload_static.php';
         call_user_func(\Composer\Autoload\ComposerStaticInit36e0fc8a7d06259f5c7bb178cf84ebb5::getInitializer($loader));
