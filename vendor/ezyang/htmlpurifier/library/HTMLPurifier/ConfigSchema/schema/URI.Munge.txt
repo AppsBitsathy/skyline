@@ -47,7 +47,7 @@ DEFAULT: NULL
         <tr>
             <th>Key</th>
             <th>Description</th>
-            <th>Example <code>&lt;a &gt;</code></th>
+            <th>Example <code>&lt;a href=""&gt;</code></th>
         </tr>
     </thead>
     <tbody>
