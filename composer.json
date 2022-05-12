@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "ext-gd": "*",
+        "a1comms/php-gds": "^4.2",
         "barryvdh/laravel-dompdf": "^0.9.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -15,7 +16,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
-        "phpoffice/phpspreadsheet": "^1.8.0"
+        "phpoffice/phpspreadsheet": "^1.20"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

@@ -151,6 +151,7 @@ class ComposerStaticInit36e0fc8a7d06259f5c7bb178cf84ebb5
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
             'GrahamCampbell\\ResultType\\' => 26,
+            'GDS\\' => 4,
         ),
         'F' => 
         array (
@@ -479,6 +480,10 @@ class ComposerStaticInit36e0fc8a7d06259f5c7bb178cf84ebb5
         'GrahamCampbell\\ResultType\\' => 
         array (
             0 => __DIR__ . '/..' . '/graham-campbell/result-type/src',
+        ),
+        'GDS\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/a1comms/php-gds/src/GDS',
         ),
         'Fruitcake\\Cors\\' => 
         array (
@@ -1840,6 +1845,21 @@ class ComposerStaticInit36e0fc8a7d06259f5c7bb178cf84ebb5
         'FontLib\\WOFF\\TableDirectoryEntry' => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib/WOFF/TableDirectoryEntry.php',
         'Fruitcake\\Cors\\CorsServiceProvider' => __DIR__ . '/..' . '/fruitcake/laravel-cors/src/CorsServiceProvider.php',
         'Fruitcake\\Cors\\HandleCors' => __DIR__ . '/..' . '/fruitcake/laravel-cors/src/HandleCors.php',
+        'GDS\\Entity' => __DIR__ . '/..' . '/a1comms/php-gds/src/GDS/Entity.php',
+        'GDS\\Exception\\Contention' => __DIR__ . '/..' . '/a1comms/php-gds/src/GDS/Exception/Contention.php',
+        'GDS\\Exception\\GQL' => __DIR__ . '/..' . '/a1comms/php-gds/src/GDS/Exception/GQL.php',
+        'GDS\\Gateway' => __DIR__ . '/..' . '/a1comms/php-gds/src/GDS/Gateway.php',
+        'GDS\\Gateway\\GRPCv1' => __DIR__ . '/..' . '/a1comms/php-gds/src/GDS/Gateway/GRPCv1.php',
+        'GDS\\Gateway\\ProtoBuf' => __DIR__ . '/..' . '/a1comms/php-gds/src/GDS/Gateway/ProtoBuf.php',
+        'GDS\\Gateway\\RESTv1' => __DIR__ . '/..' . '/a1comms/php-gds/src/GDS/Gateway/RESTv1.php',
+        'GDS\\Mapper' => __DIR__ . '/..' . '/a1comms/php-gds/src/GDS/Mapper.php',
+        'GDS\\Mapper\\GRPCv1' => __DIR__ . '/..' . '/a1comms/php-gds/src/GDS/Mapper/GRPCv1.php',
+        'GDS\\Mapper\\ProtoBuf' => __DIR__ . '/..' . '/a1comms/php-gds/src/GDS/Mapper/ProtoBuf.php',
+        'GDS\\Mapper\\ProtoBufGQLParser' => __DIR__ . '/..' . '/a1comms/php-gds/src/GDS/Mapper/ProtoBufGQLParser.php',
+        'GDS\\Mapper\\RESTv1' => __DIR__ . '/..' . '/a1comms/php-gds/src/GDS/Mapper/RESTv1.php',
+        'GDS\\Property\\Geopoint' => __DIR__ . '/..' . '/a1comms/php-gds/src/GDS/Property/Geopoint.php',
+        'GDS\\Schema' => __DIR__ . '/..' . '/a1comms/php-gds/src/GDS/Schema.php',
+        'GDS\\Store' => __DIR__ . '/..' . '/a1comms/php-gds/src/GDS/Store.php',
         'GrahamCampbell\\ResultType\\Error' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Error.php',
         'GrahamCampbell\\ResultType\\Result' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Result.php',
         'GrahamCampbell\\ResultType\\Success' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Success.php',
