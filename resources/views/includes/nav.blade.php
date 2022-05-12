@@ -3,7 +3,7 @@
         {{-- <a href="#" data-target="slide-out" class="sidenav-trigger black-text"><i class="material-icons">menu</i></a> --}}
         <div class="nav-wrapper">
             <a href="{{ route('home') }}" class="brand-logo center black-text p-1"><img
-                    src="{{ asset('public/assets/images/logo.png') }}" alt="Skyline Logo"></a>
+                    src="{{ asset('assets/images/logo.png') }}" alt="Skyline Logo"></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li class="black-text mr-3">ISI Standard</li>
                 <li class="mt-2">
@@ -29,10 +29,10 @@
                 <li>
                     <div class="user-view">
                         {{-- <div class="background">
-                            <img class="circle" src="{{ asset('public/assets/images/office_image.png') }}">
+                            <img class="circle" src="{{ asset('assets/images/office_image.png') }}">
                         </div> --}}
                         <a href="#user"><img class="circle"
-                                src="{{ asset('public/assets/images/user_image.png') }}"></a>
+                                src="{{ asset('assets/images/user_image.png') }}"></a>
 
                         <h5 class=""><a href="{{ url('/') }}">SKYLINE PUMPS</a></h5>
                     </div>
@@ -42,10 +42,10 @@
             <li>
                 <div class="user-view">
                     {{-- <div class="background">
-                        <img class="circle" src="{{ asset('public/assets/images/office_image.png') }}">
+                        <img class="circle" src="{{ asset('assets/images/office_image.png') }}">
                     </div> --}}
                     <a class="waves-effect" href="#user"><img class="circle"
-                            src="{{ asset('public/assets/images/user_image.png') }}"></a>
+                            src="{{ asset('assets/images/user_image.png') }}"></a>
                     <div>
                         <ul>
                             <li><span class="name">{{ Auth::user()->name }}</span></li>

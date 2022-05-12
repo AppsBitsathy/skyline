@@ -1,6 +1,6 @@
 @extends('includes.master')
 @section('custom-css')
-    <link rel="stylesheet" href="{{ asset('public/assets/css/coloris/coloris.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/coloris/coloris.min.css') }}">
     <style>
         input {
             width: 150px;
@@ -432,7 +432,7 @@
 @endsection
 
 @section('custom-script')
-    <script src="{{ asset('public/assets/js/coloris/coloris.min.js') }}"></script>
+    <script src="{{ asset('assets/js/coloris/coloris.min.js') }}"></script>
     <script>
         Coloris({
             el: '.coloris',

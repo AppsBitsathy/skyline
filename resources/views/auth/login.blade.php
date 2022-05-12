@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.ico') }}">
     @include('includes.top')
 </head>
 
@@ -16,11 +16,11 @@ $rId = 0;
 <nav class="transparent z-depth-0 p-2">
     <div class="nav-wrapper">
         <a href="{{ route('home') }}" class="brand-logo center black-text p-1"><img
-                src="{{ asset('public/assets/images/logo.png') }}" alt="Skyline Logo"></a>
+                src="{{ asset('assets/images/logo.png') }}" alt="Skyline Logo"></a>
     </div>
 </nav>
 
-<body style="background-image: url('{{ asset('public/assets/images/login_background.png') }}');background-repeat: no-repeat;
+<body style="background-image: url('{{ asset('assets/images/login_background.png') }}');background-repeat: no-repeat;
     background-size: cover;">
     <div class="container">
         <div class="row">

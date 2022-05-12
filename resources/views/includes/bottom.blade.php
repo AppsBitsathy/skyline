@@ -1,9 +1,9 @@
-<script src="{{ asset('public/assets/js/jquery.min.js') }}"></script>
-<script src="{{ asset('public/assets/js/materialize.min.js') }}"></script>
-<script src="{{ asset('public/assets/js/html2canvas.min.js') }}"></script>
-<script src="{{ asset('public/assets/js/init.js') }}"></script>
-<script src="{{ asset('public/assets/js/plotly.min.js') }}"></script>
-{{-- <script src="{{ asset('public/assets/js/html2canvas.js') }}"></script> --}}
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/materialize.min.js') }}"></script>
+<script src="{{ asset('assets/js/html2canvas.min.js') }}"></script>
+<script src="{{ asset('assets/js/init.js') }}"></script>
+<script src="{{ asset('assets/js/plotly.min.js') }}"></script>
+{{-- <script src="{{ asset('assets/js/html2canvas.js') }}"></script> --}}
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
 <script>
@@ -62,7 +62,7 @@
         let url = window.location.protocol+ "//" + window.location.host;;
 
         $.ajax({
-            url: url + "/pms/home/changeisi",
+            url: url + "/home/changeisi",
             method: 'get',
             data: {
                 'isi': this.value

@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public/assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.ico') }}">
     @include('includes.top')
     @yield('custom-css')
     @include('includes.nav')
 </head>
 
-<body class="grey lighten-2" style="background-image: url('{{ asset('public/assets/images/home_background.jpg') }}');background-repeat: no-repeat;
+<body class="grey lighten-2" style="background-image: url('{{ asset('assets/images/home_background.jpg') }}');background-repeat: no-repeat;
     background-size: cover;">
     <div>
     </div>
