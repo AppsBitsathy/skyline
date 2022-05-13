@@ -215,6 +215,15 @@
         var layout;
         var tracetest;
 
+        var thLineColor = '#1F77B4';
+        var oaeLineColor = '#FF7F0E';
+        var currLineColor = '#2CA02C';
+
+        var thTextColor = '#1F77B4';
+        var oaeTextColor = '#FF7F0E';
+        var currTextColor = '#2CA02C';
+        var disTextColor = '#7F7F7F';
+
         var sample1x = [];
         var sample1y = [];
         var sample2x = [];
@@ -2005,8 +2014,8 @@
                 ],
                 name: 'I Heat',
                 hoverinfo: 'none',
-                xgap: 1,
-                ygap: 1,
+                xgap: 16,
+                ygap: 16,
                 showscale: false,
                 yaxis: 'y3'
             }

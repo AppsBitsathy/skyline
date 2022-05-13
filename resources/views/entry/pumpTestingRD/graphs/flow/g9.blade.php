@@ -3645,8 +3645,8 @@
                 ],
                 name: 'I Heat',
                 hoverinfo: 'none',
-                xgap: 1,
-                ygap: 1,
+                xgap: 16,
+                ygap: 16,
                 showscale: false,
                 yaxis: 'y3'
             }

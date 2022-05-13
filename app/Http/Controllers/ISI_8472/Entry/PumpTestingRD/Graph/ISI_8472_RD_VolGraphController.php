@@ -11,14 +11,14 @@ use App\Models\ISI_8472\Master\isi_8472_MasterPumpType;
 use Barryvdh\DomPDF\Facade as PDF;
 use Exception;
 use Illuminate\Http\Request;
-use PhpOffice\PhpSpreadsheet\Chart\Chart;
-use PhpOffice\PhpSpreadsheet\Chart\DataSeries;
-use PhpOffice\PhpSpreadsheet\Chart\DataSeriesValues;
-use PhpOffice\PhpSpreadsheet\Chart\Legend;
-use PhpOffice\PhpSpreadsheet\Chart\PlotArea;
-use PhpOffice\PhpSpreadsheet\Chart\Title;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+//use PhpOffice\PhpSpreadsheet\Chart\Chart;
+//use PhpOffice\PhpSpreadsheet\Chart\DataSeries;
+//use PhpOffice\PhpSpreadsheet\Chart\DataSeriesValues;
+//use PhpOffice\PhpSpreadsheet\Chart\Legend;
+//use PhpOffice\PhpSpreadsheet\Chart\PlotArea;
+//use PhpOffice\PhpSpreadsheet\Chart\Title;
+//use PhpOffice\PhpSpreadsheet\Spreadsheet;
+//use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ISI_8472_RD_VolGraphController extends Controller
 {
@@ -417,137 +417,137 @@ class ISI_8472_RD_VolGraphController extends Controller
 
     public function excel(Request $request)
     {
-        try {
-            $isiGraphScale = new isi_8472_Scale();
+        // try {
+        //     $isiGraphScale = new isi_8472_Scale();
 
-            $isiGraphScale->fldpmno = $request->input('coPumpNo');
-            $isiGraphScale->fldsno = $request->input('coPumpType');
-            $isiGraphScale->xaxis = $request->input('xaxis');
-            $isiGraphScale->yaxis1 = $request->input('yaxis1');
-            $isiGraphScale->yaxis2 = $request->input('yaxis2');
-            $isiGraphScale->yaxis3 = $request->input('yaxis3');
-            $isiGraphScale->gtype = $request->input('gType');
+        //     $isiGraphScale->fldpmno = $request->input('coPumpNo');
+        //     $isiGraphScale->fldsno = $request->input('coPumpType');
+        //     $isiGraphScale->xaxis = $request->input('xaxis');
+        //     $isiGraphScale->yaxis1 = $request->input('yaxis1');
+        //     $isiGraphScale->yaxis2 = $request->input('yaxis2');
+        //     $isiGraphScale->yaxis3 = $request->input('yaxis3');
+        //     $isiGraphScale->gtype = $request->input('gType');
 
-            $isiGraphScale->save();
+        //     $isiGraphScale->save();
 
-            $isiGraphScale = isi_8472_Scale::where('fldpmno', '=', $request['coPumpNo'], 'and', 'fldsno', '=', $request['coPumpType'], 'and', 'gtype', '=', 'Volumetric')->orderBy('id', 'DESC')->limit(1)->get();
+        //     $isiGraphScale = isi_8472_Scale::where('fldpmno', '=', $request['coPumpNo'], 'and', 'fldsno', '=', $request['coPumpType'], 'and', 'gtype', '=', 'Volumetric')->orderBy('id', 'DESC')->limit(1)->get();
 
-            $isiGraphScaleValues = $isiGraphScale[0];
+        //     $isiGraphScaleValues = $isiGraphScale[0];
 
-            $volumetricsValues = isi_8472_EntryPumpTest::where('fldpmno', '=', $request['coPumpNo'], 'and', 'fldsno', '=', $request['coPumpType'])->orderBy('id', 'DESC')->get();
+        //     $volumetricsValues = isi_8472_EntryPumpTest::where('fldpmno', '=', $request['coPumpNo'], 'and', 'fldsno', '=', $request['coPumpType'])->orderBy('id', 'DESC')->get();
 
-            $pump = isi_8472_MasterPumpType::where('fldsno', '=', $request['coPumpType'])->limit(1)->get();
+        //     $pump = isi_8472_MasterPumpType::where('fldsno', '=', $request['coPumpType'])->limit(1)->get();
 
-            $pumpValues = $pump[0];
+        //     $pumpValues = $pump[0];
 
-            $coPump = array(
-                'coPumpNo' => $request->input('coPumpNo'),
-                'coPumpType' => $request->input('coPumpType')
-            );
+        //     $coPump = array(
+        //         'coPumpNo' => $request->input('coPumpNo'),
+        //         'coPumpType' => $request->input('coPumpType')
+        //     );
 
-            $spreadsheet = new Spreadsheet();
-            $worksheet = $spreadsheet->getActiveSheet();
+        //     $spreadsheet = new Spreadsheet();
+        //     $worksheet = $spreadsheet->getActiveSheet();
 
-            $chart = array();
-            $chart[] =  ['Discharge', 'THead', 'Input Power', 'Current'];
-            $tot = count($volumetricsValues) + 1;
+        //     $chart = array();
+        //     $chart[] =  ['Discharge', 'THead', 'Input Power', 'Current'];
+        //     $tot = count($volumetricsValues) + 1;
 
-            foreach ($volumetricsValues as $val) {
-                $a = array();
-                // $a[] = $key;
-                if (isset($val['fldrdis'])) {
-                    $a[] = number_format((float)$val['fldrdis'], 5, '.', '');
-                } else {
-                    $a[] = '-';
-                }
-                if (isset($val['fldrthead'])) {
-                    $a[] = number_format((float)$val['fldrthead'], 5, '.', '');
-                } else {
-                    $a[] = '-';
-                }
-                if (isset($val['fldrip'])) {
-                    $a[] = number_format((float)$val['fldrip'], 5, '.', '');
-                } else {
-                    $a[] = '-';
-                }
-                if (isset($val['fldcurr'])) {
-                    $a[] = number_format((float)$val['fldcurr'], 5, '.', '');
-                } else {
-                    $a[] = '-';
-                }
-                $chart[] = $a;
-            }
+        //     foreach ($volumetricsValues as $val) {
+        //         $a = array();
+        //         // $a[] = $key;
+        //         if (isset($val['fldrdis'])) {
+        //             $a[] = number_format((float)$val['fldrdis'], 5, '.', '');
+        //         } else {
+        //             $a[] = '-';
+        //         }
+        //         if (isset($val['fldrthead'])) {
+        //             $a[] = number_format((float)$val['fldrthead'], 5, '.', '');
+        //         } else {
+        //             $a[] = '-';
+        //         }
+        //         if (isset($val['fldrip'])) {
+        //             $a[] = number_format((float)$val['fldrip'], 5, '.', '');
+        //         } else {
+        //             $a[] = '-';
+        //         }
+        //         if (isset($val['fldcurr'])) {
+        //             $a[] = number_format((float)$val['fldcurr'], 5, '.', '');
+        //         } else {
+        //             $a[] = '-';
+        //         }
+        //         $chart[] = $a;
+        //     }
 
-            $worksheet->fromArray($chart);
+        //     $worksheet->fromArray($chart);
 
-            $dataSeriesLabels = [
-                new DataSeriesValues(DataSeriesValues::DATASERIES_TYPE_STRING, 'Worksheet!$B$1', null, 1),
-                new DataSeriesValues(DataSeriesValues::DATASERIES_TYPE_STRING, 'Worksheet!$C$1', null, 1),
-                new DataSeriesValues(DataSeriesValues::DATASERIES_TYPE_STRING, 'Worksheet!$D$1', null, 1),
-            ];
+        //     $dataSeriesLabels = [
+        //         new DataSeriesValues(DataSeriesValues::DATASERIES_TYPE_STRING, 'Worksheet!$B$1', null, 1),
+        //         new DataSeriesValues(DataSeriesValues::DATASERIES_TYPE_STRING, 'Worksheet!$C$1', null, 1),
+        //         new DataSeriesValues(DataSeriesValues::DATASERIES_TYPE_STRING, 'Worksheet!$D$1', null, 1),
+        //     ];
 
-            $xAxisTickValues = [
-                new DataSeriesValues(DataSeriesValues::DATASERIES_TYPE_STRING, 'Worksheet!$A$2:$A$' . $tot, null, 4), // Q1 to Q4
-            ];
+        //     $xAxisTickValues = [
+        //         new DataSeriesValues(DataSeriesValues::DATASERIES_TYPE_STRING, 'Worksheet!$A$2:$A$' . $tot, null, 4), // Q1 to Q4
+        //     ];
 
-            $dataSeriesValues = [
-                new DataSeriesValues(DataSeriesValues::DATASERIES_TYPE_NUMBER, 'Worksheet!$B$2:$B$' . $tot, null, 4),
-                new DataSeriesValues(DataSeriesValues::DATASERIES_TYPE_NUMBER, 'Worksheet!$C$2:$C$' . $tot, null, 4),
-                new DataSeriesValues(DataSeriesValues::DATASERIES_TYPE_NUMBER, 'Worksheet!$D$2:$D$' . $tot, null, 4),
-            ];
+        //     $dataSeriesValues = [
+        //         new DataSeriesValues(DataSeriesValues::DATASERIES_TYPE_NUMBER, 'Worksheet!$B$2:$B$' . $tot, null, 4),
+        //         new DataSeriesValues(DataSeriesValues::DATASERIES_TYPE_NUMBER, 'Worksheet!$C$2:$C$' . $tot, null, 4),
+        //         new DataSeriesValues(DataSeriesValues::DATASERIES_TYPE_NUMBER, 'Worksheet!$D$2:$D$' . $tot, null, 4),
+        //     ];
 
-            $series = new DataSeries(
-                DataSeries::TYPE_LINECHART, // plotType
-                DataSeries::GROUPING_STANDARD, // plotGrouping
-                range(
-                    0,
-                    count($dataSeriesValues) - 1
-                ), // plotOrder
-                $dataSeriesLabels, // plotLabel
-                $xAxisTickValues, // plotCategory
-                $dataSeriesValues        // plotValues
-            );
-            // Set additional dataseries parameters
-            //     Make it a vertical column rather than a horizontal bar graph
-            $series->setPlotDirection(DataSeries::DIRECTION_COL);
+        //     $series = new DataSeries(
+        //         DataSeries::TYPE_LINECHART, // plotType
+        //         DataSeries::GROUPING_STANDARD, // plotGrouping
+        //         range(
+        //             0,
+        //             count($dataSeriesValues) - 1
+        //         ), // plotOrder
+        //         $dataSeriesLabels, // plotLabel
+        //         $xAxisTickValues, // plotCategory
+        //         $dataSeriesValues        // plotValues
+        //     );
+        //     // Set additional dataseries parameters
+        //     //     Make it a vertical column rather than a horizontal bar graph
+        //     $series->setPlotDirection(DataSeries::DIRECTION_COL);
 
-            // Set the series in the plot area
-            $plotArea = new PlotArea(null, [$series]);
-            // Set the chart legend
-            $legend = new Legend(Legend::POSITION_RIGHT, null, false);
+        //     // Set the series in the plot area
+        //     $plotArea = new PlotArea(null, [$series]);
+        //     // Set the chart legend
+        //     $legend = new Legend(Legend::POSITION_RIGHT, null, false);
 
-            $title = new Title('Pump Performance Testing As Per IS 8472');
+        //     $title = new Title('Pump Performance Testing As Per IS 8472');
 
-            $chart = new Chart(
-                'chart1', // name
-                $title, // title
-                $legend, // legend
-                $plotArea, // plotArea
-                true, // plotVisibleOnly
-                DataSeries::EMPTY_AS_GAP, // displayBlanksAs
-                // new Title('Date'), // xAxisLabel
-                // $yAxisLabel  // yAxisLabel
-            );
+        //     $chart = new Chart(
+        //         'chart1', // name
+        //         $title, // title
+        //         $legend, // legend
+        //         $plotArea, // plotArea
+        //         true, // plotVisibleOnly
+        //         DataSeries::EMPTY_AS_GAP, // displayBlanksAs
+        //         // new Title('Date'), // xAxisLabel
+        //         // $yAxisLabel  // yAxisLabel
+        //     );
 
-            // Set the position where the chart should appear in the worksheet
-            $chart->setTopLeftPosition('F5');
-            $chart->setBottomRightPosition('N30');
+        //     // Set the position where the chart should appear in the worksheet
+        //     $chart->setTopLeftPosition('F5');
+        //     $chart->setBottomRightPosition('N30');
 
-            // Add the chart to the worksheet
-            $worksheet->addChart($chart);
-            // $filename = "abcd.xlsx";
-            // $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
-            // $writer->setIncludeCharts(true);
-            // $writer->save($filename);
+        //     // Add the chart to the worksheet
+        //     $worksheet->addChart($chart);
+        //     // $filename = "abcd.xlsx";
+        //     // $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+        //     // $writer->setIncludeCharts(true);
+        //     // $writer->save($filename);
 
-            $writer = new Xlsx($spreadsheet);
-            $writer->setIncludeCharts(true);
-            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-            header('Content-Disposition: attachment; filename="' . urlencode('test.xlsx') . '"');
-            $writer->save('php://output');
-        } catch (Exception $ex) {
-            dd($ex);
-        }
+        //     $writer = new Xlsx($spreadsheet);
+        //     $writer->setIncludeCharts(true);
+        //     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        //     header('Content-Disposition: attachment; filename="' . urlencode('test.xlsx') . '"');
+        //     $writer->save('php://output');
+        // } catch (Exception $ex) {
+        //     dd($ex);
+        // }
     }
 
     public function add_print(Request $request)
