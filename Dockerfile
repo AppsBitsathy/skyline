@@ -4,7 +4,7 @@ COPY . /app
 RUN composer install && composer dumpautoload
 
 FROM php:8.1.0RC5-apache-buster
-RUN docker-php-ext-install pdo pdo_mysql gd
+RUN docker-php-ext-install pdo pdo_mysql
 
 EXPOSE 8080
 COPY --from=build /app /var/www/
