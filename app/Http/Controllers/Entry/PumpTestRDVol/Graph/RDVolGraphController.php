@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Entry\PumpTestRDVol\Graph;
 
-require 'vendor/autoload.php';
-
 use App\Http\Controllers\Controller;
 use App\Models\EntryPumpTestIsiVolumetric;
 use App\Models\EntryPumpTestISIVolumetricReport;
