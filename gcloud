@@ -1,0 +1,58 @@
+gcloud run deploy \
+--set-env-vars="APP_NAME=Laravel" \
+--set-env-vars="APP_ENV=local" \
+--set-env-vars="APP_KEY=base64:7ZG7Kf4mCdCPIHS6++IsWi4tahw5RdUfJ/EFVbL1f5g=" \
+--set-env-vars="APP_DEBUG=true" \
+--set-env-vars="APP_URL=https://localhost" \
+--set-env-vars="LOG_CHANNEL=stack" \
+--set-env-vars="LOG_LEVEL=debug" \
+--set-env-vars="DB_CONNECTION=mysql" \
+--set-env-vars="DB_HOST=127.0.0.1" \
+--set-env-vars="DB_PORT=3306" \
+--set-env-vars="DB_DATABASE=skyline" \
+--set-env-vars="DB_USERNAME=skyline" \
+--set-env-vars="DB_PASSWORD=skyline" \
+--set-env-vars="BROADCAST_DRIVER=log" \
+--set-env-vars="CACHE_DRIVER=file" \
+--set-env-vars="FILESYSTEM_DRIVER=local" \
+--set-env-vars="QUEUE_CONNECTION=sync" \
+--set-env-vars="SESSION_DRIVER=file" \
+--set-env-vars="SESSION_LIFETIME=120" \
+--set-env-vars="MEMCACHED_HOST=127.0.0.1" \
+--set-env-vars="REDIS_HOST=127.0.0.1" \
+--set-env-vars="REDIS_PASSWORD=null" \
+--set-env-vars="REDIS_PORT=6379" \
+--set-env-vars="MAIL_MAILER=smtp" \
+--set-env-vars="MAIL_HOST=mailhog" \
+--set-env-vars="MAIL_PORT=1025" \
+--set-env-vars="MAIL_USERNAME=null" \
+--set-env-vars="MAIL_PASSWORD=null" \
+--set-env-vars="MAIL_ENCRYPTION=null" \
+--set-env-vars="MAIL_FROM_ADDRESS=null" \
+--set-env-vars="MAIL_FROM_NAME="${APP_NAME}"" \
+--set-env-vars="AWS_ACCESS_KEY_ID=" \
+--set-env-vars="AWS_SECRET_ACCESS_KEY=" \
+--set-env-vars="AWS_DEFAULT_REGION=us-east-1" \
+--set-env-vars="AWS_BUCKET=" \
+--set-env-vars="AWS_USE_PATH_STYLE_ENDPOINT=false" \
+--set-env-vars="PUSHER_APP_ID=" \
+--set-env-vars="PUSHER_APP_KEY=" \
+--set-env-vars="PUSHER_APP_SECRET=" \
+--set-env-vars="PUSHER_APP_CLUSTER=mt1" \
+--set-env-vars="MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"" \
+--set-env-vars="MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"" \
+--image=gcr.io/skyline-softwares/skyline@sha256:82209da8db5b7bb256bf43ff9ca20ceae05d066b2f8c0dbcb6188c973940903a
+
+gcloud run deploy \
+--update-env-vars="DB_HOST=10.106.176.3" \
+--image=gcr.io/skyline-softwares/skyline@sha256:e5e8ae0db37fa87f35c1baf3b148ac3f3bc41e5d15b0ae5ac3cb4b3a79300861
+
+
+gcloud run deploy --set-env-vars="APP_NAME=Laravel" --set-env-vars="APP_ENV=local" --set-env-vars="APP_KEY=base64:7ZG7Kf4mCdCPIHS6++IsWi4tahw5RdUfJ/EFVbL1f5g=" --set-env-vars="APP_DEBUG=true" --set-env-vars="APP_URL=https://localhost" --set-env-vars="LOG_CHANNEL=stack" --set-env-vars="LOG_LEVEL=debug" --set-env-vars="DB_CONNECTION=mysql" --set-env-vars="DB_HOST=121.200.55.62" --set-env-vars="DB_PORT=3306" --set-env-vars="DB_DATABASE=pms" --set-env-vars="DB_USERNAME=ragav" --set-env-vars="DB_PASSWORD=ragav" --set-env-vars="BROADCAST_DRIVER=log" --set-env-vars="CACHE_DRIVER=file" --set-env-vars="FILESYSTEM_DRIVER=local" --set-env-vars="QUEUE_CONNECTION=sync" --set-env-vars="SESSION_DRIVER=file" --set-env-vars="SESSION_LIFETIME=120" --set-env-vars="MEMCACHED_HOST=127.0.0.1" --set-env-vars="REDIS_HOST=127.0.0.1" --set-env-vars="REDIS_PASSWORD=null" --set-env-vars="REDIS_PORT=6379" --set-env-vars="MAIL_MAILER=smtp" --set-env-vars="MAIL_HOST=mailhog" --set-env-vars="MAIL_PORT=1025" --set-env-vars="MAIL_USERNAME=null" --set-env-vars="MAIL_PASSWORD=null" --set-env-vars="MAIL_ENCRYPTION=null" --set-env-vars="MAIL_FROM_ADDRESS=null" --set-env-vars="MAIL_FROM_NAME="${APP_NAME}"" --set-env-vars="AWS_ACCESS_KEY_ID=" --set-env-vars="AWS_SECRET_ACCESS_KEY=" --set-env-vars="AWS_DEFAULT_REGION=us-east-1" --set-env-vars="AWS_BUCKET=" --set-env-vars="AWS_USE_PATH_STYLE_ENDPOINT=false" --set-env-vars="PUSHER_APP_ID=" --set-env-vars="PUSHER_APP_KEY=" --set-env-vars="PUSHER_APP_SECRET=" --set-env-vars="PUSHER_APP_CLUSTER=mt1" --set-env-vars="MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"" --set-env-vars="MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"" --image=gcr.io/skyline-softwares/skyline@sha256:94a12f6e289968c27cdb536264244d25cae765f2bcbcff79c2217c99086f500c
+
+
+
+
+gcloud run deploy \
+--clear-env-vars \
+--image=gcr.io/skyline-softwares/skyline@sha256:82209da8db5b7bb256bf43ff9ca20ceae05d066b2f8c0dbcb6188c973940903a

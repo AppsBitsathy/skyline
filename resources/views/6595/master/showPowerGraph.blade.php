@@ -38,7 +38,7 @@ $rId = 12;
                 name: 'TH',
                 type: 'scatter',
                 line: {
-                    color: thLineColor
+                    color: '#1F77B4'
                 },
             };
 
