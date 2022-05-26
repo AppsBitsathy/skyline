@@ -19,6 +19,9 @@
 
         table td {
             border: 2px solid rgba(0, 0, 0, 0.12);
+            font-size: 12px;
+            line-height: normal;
+            padding: 8px;
             /* background-color: #0000ff66; */
         }
 
