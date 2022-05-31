@@ -330,7 +330,9 @@ class EntryPumpTestingRD_Flow_6595_Controller extends Controller
         try {
             // dd($pumpNo);
             $isiScale = isi_6595_Scale::where('fldpno', '=', $pumpNo, 'and', 'fldsno', '=', $pumpType)->orderBy('id', 'DESC')->limit(1)->get();
-            return $isiScale[0];
+            if (count($isiScale) > 0) {
+                return $isiScale[0];
+            }
         } catch (Exception $ex) {
             dd($ex);
         }

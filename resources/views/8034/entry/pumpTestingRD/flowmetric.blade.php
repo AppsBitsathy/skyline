@@ -387,7 +387,7 @@ $rMain = 2;
             let ptype = $('input[name="coPumpType"]').val();
 
             $.ajax({
-                url: "volumetric_getcoords/" + pno + "/" + ptype,
+                url: "flowmetric_getcoords/" + pno + "/" + ptype,
                 type: 'GET',
                 success: function(res) {
                     console.log(res);

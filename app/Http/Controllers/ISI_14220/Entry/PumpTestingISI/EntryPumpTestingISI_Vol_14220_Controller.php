@@ -291,7 +291,9 @@ class EntryPumpTestingISI_Vol_14220_Controller extends Controller
         try {
             // dd($pumpNo);
             $isiScale = isi_14220_Scale::where('fldpno', '=', $pumpNo, 'and', 'fldsno', '=', $pumpType)->orderBy('id', 'DESC')->limit(1)->get();
-            return $isiScale[0];
+            if (count($isiScale) > 0) {
+                return $isiScale[0];
+            }
         } catch (Exception $ex) {
             dd($ex);
         }

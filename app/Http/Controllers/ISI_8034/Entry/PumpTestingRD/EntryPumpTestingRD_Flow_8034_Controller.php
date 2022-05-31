@@ -292,4 +292,16 @@ class EntryPumpTestingRD_Flow_8034_Controller extends Controller
             return redirect()->back()->with('status', $ex->__toString());
         }
     }
+
+    public function show($pumpNo = null, $pumpType = null)
+    {
+        try {
+            $isiScale = isi_8034_Scale::where('fldpno', '=', $pumpNo, 'and', 'fldsno', '=', $pumpType)->orderBy('id', 'DESC')->limit(1)->get();
+            if (count($isiScale) > 0) {
+                return $isiScale[0];
+            }
+        } catch (Exception $ex) {
+            dd($ex);
+        }
+    }
 }
