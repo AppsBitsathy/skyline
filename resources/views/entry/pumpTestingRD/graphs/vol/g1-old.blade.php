@@ -189,92 +189,92 @@
             return [x, y];
         }
 
-        function findLineIntercepts(t1, t2) {
-            const lineIntercepts = (() => {
-                const Point = (x, y) => ({
-                    x,
-                    y
-                });
-                const Line = (p1, p2) => ({
-                    p1,
-                    p2
-                });
-                const Vector = line => Point(line.p2.x - line.p1.x, line.p2.y - line.p1.y);
+        // function findLineIntercepts(t1, t2) {
+        //     const lineIntercepts = (() => {
+        //         const Point = (x, y) => ({
+        //             x,
+        //             y
+        //         });
+        //         const Line = (p1, p2) => ({
+        //             p1,
+        //             p2
+        //         });
+        //         const Vector = line => Point(line.p2.x - line.p1.x, line.p2.y - line.p1.y);
 
-                function interceptSegs(line1, line2) {
-                    const a = Vector(line1),
-                        b = Vector(line2);
-                    const c = a.x * b.y - a.y * b.x;
-                    if (c) {
-                        const e = Point(line1.p1.x - line2.p1.x, line1.p1.y - line2.p1.y);
-                        const u = (a.x * e.y - a.y * e.x) / c;
-                        if (u >= 0 && u <= 1) {
-                            const u = (b.x * e.y - b.y * e.x) / c;
-                            if (u >= 0 && u <= 1) {
-                                return Point(line1.p1.x + a.x * u, line1.p1.y + a.y * u);
-                            }
-                        }
-                    }
-                }
-                const PointFromTable = (t, idx) => Point(t.x[idx], t.y[idx]);
-                const LineFromTable = (t, idx) => Line(PointFromTable(t, idx++), PointFromTable(t, idx));
-                return function(table1, table2) {
-                    const results = [];
-                    var i = 0,
-                        j;
-                    while (i < table1.x.length - 1) {
+        //         function interceptSegs(line1, line2) {
+        //             const a = Vector(line1),
+        //                 b = Vector(line2);
+        //             const c = a.x * b.y - a.y * b.x;
+        //             if (c) {
+        //                 const e = Point(line1.p1.x - line2.p1.x, line1.p1.y - line2.p1.y);
+        //                 const u = (a.x * e.y - a.y * e.x) / c;
+        //                 if (u >= 0 && u <= 1) {
+        //                     const u = (b.x * e.y - b.y * e.x) / c;
+        //                     if (u >= 0 && u <= 1) {
+        //                         return Point(line1.p1.x + a.x * u, line1.p1.y + a.y * u);
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //         const PointFromTable = (t, idx) => Point(t.x[idx], t.y[idx]);
+        //         const LineFromTable = (t, idx) => Line(PointFromTable(t, idx++), PointFromTable(t, idx));
+        //         return function(table1, table2) {
+        //             const results = [];
+        //             var i = 0,
+        //                 j;
+        //             while (i < table1.x.length - 1) {
 
-                        const line1 = LineFromTable(table1, i);
-                        j = 0;
-                        while (j < table2.x.length - 1) {
-                            const line2 = LineFromTable(table2, j);
-                            const point = interceptSegs(line1, line2);
-                            if (point) {
-                                results.push({
-                                    description: `'${table1.name}' line seg index ${i}-${i+1} intercepts '${table2.name}' line seg index ${j} - ${j+1}`,
+        //                 const line1 = LineFromTable(table1, i);
+        //                 j = 0;
+        //                 while (j < table2.x.length - 1) {
+        //                     const line2 = LineFromTable(table2, j);
+        //                     const point = interceptSegs(line1, line2);
+        //                     if (point) {
+        //                         results.push({
+        //                             description: `'${table1.name}' line seg index ${i}-${i+1} intercepts '${table2.name}' line seg index ${j} - ${j+1}`,
 
-                                    // The description (line above) can be replaced 
-                                    // with relevant data as follows
-                                    /*  remove this line to include additional info per intercept
-                                                            tableName1: table1.name,
-                                                            tableName2: table2.name,
-                                                            table_1_PointStartIdx: i,
-                                                            table_1_PointEndIdx: i + 1,   
-                                                            table_2_PointStartIdx: j,
-                                                            table_2_PointEndIdx: j + 1,   
-                                    and remove this line */
+        //                             // The description (line above) can be replaced 
+        //                             // with relevant data as follows
+        //                             /*  remove this line to include additional info per intercept
+        //                                                     tableName1: table1.name,
+        //                                                     tableName2: table2.name,
+        //                                                     table_1_PointStartIdx: i,
+        //                                                     table_1_PointEndIdx: i + 1,   
+        //                                                     table_2_PointStartIdx: j,
+        //                                                     table_2_PointEndIdx: j + 1,   
+        //                             and remove this line */
 
-                                    x: point.x,
-                                    y: point.y,
-                                });
-                            }
-                            j++;
-                        }
-                        i++;
-                    }
-                    if (results.length) {
-                        // console.log("Found " + results.length + " intercepts for '" + table1.name + "' and '" + table2.name + "'");
-                        // console.log(results);
-                        return results;
-                    }
-                    // console.log("No intercept found for  '" + table1.name + "' and '" + table2.name + "'");
-                }
-            })();
+        //                             x: point.x,
+        //                             y: point.y,
+        //                         });
+        //                     }
+        //                     j++;
+        //                 }
+        //                 i++;
+        //             }
+        //             if (results.length) {
+        //                 // console.log("Found " + results.length + " intercepts for '" + table1.name + "' and '" + table2.name + "'");
+        //                 // console.log(results);
+        //                 return results;
+        //             }
+        //             // console.log("No intercept found for  '" + table1.name + "' and '" + table2.name + "'");
+        //         }
+        //     })();
 
-            const results = lineIntercepts(t1, t2);
+        //     const results = lineIntercepts(t1, t2);
 
-            if (results) {
+        //     if (results) {
 
-                for (const intercept of results) {
-                    const x = intercept.x; // get x
-                    const y = intercept.y; // get y
-                }
+        //         for (const intercept of results) {
+        //             const x = intercept.x; // get x
+        //             const y = intercept.y; // get y
+        //         }
 
-            }
+        //     }
 
-            return results[0];
+        //     return results[0];
 
-        }
+        // }
 
 
 

@@ -22,12 +22,12 @@ $rId = 12;
                     <!-- <div class="card-title">{{ __('Entry') }}</div> -->
                     <div class="card-body pt-5 pb-2">
                         <div class="row mb-4">
-                            <div class="col m3 center-align">
+                            <div class="col m2 center-align">
                                 <a class="btn waves-effect waves-light modal-trigger" href="#openModal" id="btnOpen">Open
                                     <i class="material-icons right">folder</i>
                                 </a>
                             </div>
-                            <div class="col m3 center-align">
+                            <div class="col m2 center-align">
                                 <form action="{{ route('6595_masterPowerGraphDelete') }}" method="post">
                                     @csrf
                                     <input type="hidden" name="deletePumpType">
@@ -138,6 +138,14 @@ $rId = 12;
 @section('custom-script')
     <script>
         $(document).ready(function() {
+            $(window).keydown(function(event){
+                if (event.keyCode === 13 && event.target.nodeName === 'INPUT') {
+                    var form = event.target.form;
+                    var index = Array.prototype.indexOf.call(form, event.target);
+                    form.elements[index + 1].focus();
+                    event.preventDefault();
+                }
+            });
             @if (session('status'))
                 M.toast({html:'{{ session('status') }}', classes: 'rounded'})
             @endif
@@ -231,6 +239,18 @@ $rId = 12;
                 td[0].innerHTML = i + 1;
             }
         }
+
+        $('#btnNew').click(function () {
+            $('#pumpNo').val('');
+            $('#inpassNo').val('');
+            $('#pumpNo').removeAttr('readonly');
+            $('#inpassNo').removeAttr('readonly');
+
+            $('input[name="pumpNo"]').val('');
+            $('input[name="inpassNo"]').val('');
+            $('input[name="pumpNo"]').removeAttr('readonly');
+            $('input[name="inpassNo"]').removeAttr('readonly');
+        });
 
         $('#btnGraph').click(function() {
 

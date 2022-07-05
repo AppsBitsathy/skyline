@@ -14,7 +14,12 @@ $rMain = 2;
                 <div class="card">
                     <div class="card-body pt-4 pb-2">
                         <div class="row mb-4">
-                            <div class="col m3 center-align">
+                            <div class="col m2 center-align">
+                                <a class="btn waves-effect waves-light" id="btnNew">New
+                                    <i class="material-icons right">add</i>
+                                </a>
+                            </div>
+                            <div class="col m2 center-align">
                                 <a class="btn waves-effect waves-light modal-trigger" href="#openModal" id="btnOpen">Open
                                     <i class="material-icons right">folder</i>
                                 </a>
@@ -30,7 +35,7 @@ $rMain = 2;
                                     </button>
                                 </form>
                             </div>
-                            <div class="col m2 center-align">
+                            <div class="col m3 center-align">
                                 <a class="btn waves-effect waves-light" disabled name="btnReport" id="btnReport">Report<i
                                         class="material-icons right">picture_as_pdf</i>
                                 </a>
@@ -155,7 +160,7 @@ $rMain = 2;
                                                 <td><input type="text" name="current[]" id="tblCurr" required></td>
                                                 <td><input type="text" name="watts1[]" id="tblwatts1" required></td>
                                                 <td><input type="text" name="watts2[]" id="tblwatts2" required></td>
-                                                <td><input type="text" name="frequency[]" id="tblFreq" required></td>
+                                                <td><input type="text" name="frequency[]" onchange="addRowOnTab(this)" id="tblFreq" required></td>
                                                 <td><a id="addRow" class="btn waves-effect blue"><i
                                                             class="material-icons">add</i></a>
                                                 </td>
@@ -256,6 +261,14 @@ $rMain = 2;
 @section('custom-script')
     <script>
         $(document).ready(function() {
+            $(window).keydown(function(event){
+                if (event.keyCode === 13 && event.target.nodeName === 'INPUT') {
+                    var form = event.target.form;
+                    var index = Array.prototype.indexOf.call(form, event.target);
+                    form.elements[index + 1].focus();
+                    event.preventDefault();
+                }
+            });
             @if (session('status'))
                 M.toast({html:'{{ session('status') }}', classes: 'rounded'})
             @endif
@@ -327,7 +340,7 @@ $rMain = 2;
                             +'<td><input type="text" name="current[]" required value="'+{{ round($curr, 2) }}+'"></td>'
                             +'<td><input type="text" name="watts1[]" required value="'+{{ $data->fldw1 }}+'"></td>'
                             +'<td><input type="text" name="watts2[]" required value="'+{{ $data->fldw2 }}+'"></td>'
-                            +'<td><input type="text" name="frequency[]" required value="'+{{ $data->fldfreq }}+'"></td>'
+                            +'<td><input type="text" name="frequency[]" onchange="addRowOnTab(this)" required value="'+{{ $data->fldfreq }}+'"></td>'
                             +'<td><a onclick="removeRow(' + {{ $data->fldread }} +')" class="btn waves-effect blue">'
                                     +'<i class="material-icons">remove</i></a></td>';
                             html+='</tr>';
@@ -378,7 +391,7 @@ $rMain = 2;
             html += '<td><input type="text" name="current[]" required></td>';
             html += '<td><input type="text" name="watts1[]" required></td>';
             html += '<td><input type="text" name="watts2[]" required></td>';
-            html += '<td><input type="text" name="frequency[]" required></td>';
+            html += '<td><input type="text" name="frequency[]" onchange="addRowOnTab(this)" required></td>';
             html += '<td><a onclick="removeRow(' + sno +
                 ')" class="btn waves-effect blue"><i class="material-icons">remove</i></a>';
             html += '</td>';
@@ -398,6 +411,27 @@ $rMain = 2;
                 console.log(td[0].innerHTML);
 
                 td[0].innerHTML = i + 1;
+            }
+        }
+
+        $('#btnNew').click(function () {
+            $('#pumpNo').val('');
+            $('#inpassNo').val('');
+            $('#pumpNo').removeAttr('readonly');
+            $('#inpassNo').removeAttr('readonly');
+
+            $('input[name="pumpNo"]').val('');
+            $('input[name="inpassNo"]').val('');
+            $('input[name="pumpNo"]').removeAttr('readonly');
+            $('input[name="inpassNo"]').removeAttr('readonly');
+        });
+
+        function addRowOnTab(e) {
+            if ($(e).val().toString().length > 0) {
+                console.log();
+                if ($('input[name="dis[]"]').last().val() != 0) {
+                    $('#addRow').click();                    
+                }
             }
         }
 

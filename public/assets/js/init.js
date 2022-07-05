@@ -117,10 +117,13 @@ function findLineIntercepts(t1, t2) {
 
     } catch (error) {
         console.log(error);
-        return [{
-            x: 0,
-            y: 0
-        }];
+        console.log(t1.name);
+        console.log(t2.name);
+        M.toast({html:'Error : '+t1.name + ' & ' + t2.name +' Line Interception not found!', classes: 'rounded'});
+        // return [{
+        //     x: 0,
+        //     y: 0
+        // }];
     }
 
 }

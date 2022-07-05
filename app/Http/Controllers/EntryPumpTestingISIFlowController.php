@@ -149,6 +149,15 @@ class EntryPumpTestingISIFlowController extends Controller
     public function newEntry($request)
     {
         if ($request->isMethod('POST')) {
+            if ($request->_token) {
+                $pump = MasterPumpType::where('fldsno', '=', $request->pumpType)->first();
+                $entries = EntryPumpTestIsiFlowmetric::all()->where('fldSno', '=', $pump->fldsno)->where('fldPno', '=', $request->pumpNo);
+
+                foreach ($entries as $entry) {
+                    $gEntry = EntryPumpTestIsiFlowmetric::findOrFail($entry->id);
+                    $gEntry->delete();
+                }
+            }
             $extract = $request->all();
 
             for ($i = 0; $i < count($extract['speed']); $i++) {

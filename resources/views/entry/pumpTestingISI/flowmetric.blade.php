@@ -14,12 +14,17 @@ $rMain = 2;
                 <div class="card">
                     <div class="card-body pt-4 pb-2">
                         <div class="row mb-4">
-                            <div class="col m3 center-align">
+                            <div class="col m2 center-align">
+                                <a class="btn waves-effect waves-light" id="btnNew">New
+                                    <i class="material-icons right">add</i>
+                                </a>
+                            </div>
+                            <div class="col m2 center-align">
                                 <a class="btn waves-effect waves-light modal-trigger" href="#openModal" id="btnOpen">Open
                                     <i class="material-icons right">folder</i>
                                 </a>
                             </div>
-                            <div class="col m3 center-align">
+                            <div class="col m2 center-align">
                                 <form action="{{ route('entryPumpTestISIFlowDelete') }}" method="post">
                                     @csrf
                                     <input type="hidden" name="deletePumpNo">
@@ -134,7 +139,7 @@ $rMain = 2;
                                                 <td><input type="text" name="current[]"></td>
                                                 <td><input type="text" name="watts1[]"></td>
                                                 <td><input type="text" name="watts2[]"></td>
-                                                <td><input type="text" name="frequency[]"></td>
+                                                <td><input type="text" name="frequency[]" onchange="addRowOnTab(this)"></td>
                                                 <td><a id="addRow" class="btn waves-effect blue"><i
                                                             class="material-icons">add</i></a>
                                                 </td>
@@ -229,6 +234,14 @@ $rMain = 2;
 @section('custom-script')
     <script>
         $(document).ready(function() {
+            $(window).keydown(function(event){
+                if (event.keyCode === 13 && event.target.nodeName === 'INPUT') {
+                    var form = event.target.form;
+                    var index = Array.prototype.indexOf.call(form, event.target);
+                    form.elements[index + 1].focus();
+                    event.preventDefault();
+                }
+            });
             @if (session('status'))
                 M.toast({html:'{{ session('status') }}', classes: 'rounded'})
             @endif
@@ -289,7 +302,7 @@ $rMain = 2;
                         htm += '<td><input type="text" name="current[]" value="{{ $entries[$i]->fldCurr }}"></td>';
                         htm += '<td><input type="text" name="watts1[]" value="{{ $entries[$i]->fldw1 }}"></td>';
                         htm += '<td><input type="text" name="watts2[]" value="{{ $entries[$i]->fldw2 }}"></td>';
-                        htm += '<td><input type="text" name="frequency[]" value="{{ $entries[$i]->fldFreq }}"></td>';
+                        htm += '<td><input type="text" name="frequency[]" onchange="addRowOnTab(this)" value="{{ $entries[$i]->fldFreq }}"></td>';
                         htm += '<td><a id="removeRow" onclick="removeRow(' + sid + ')" class="btn waves-effect blue">'+'<i class="material-icons">remove</i></a>';
                         htm += ' </td>';
                         htm += '</tr>';
@@ -326,7 +339,7 @@ $rMain = 2;
             html += '<td><input type="text" name="current[]"></td>';
             html += '<td><input type="text" name="watts1[]"></td>';
             html += '<td><input type="text" name="watts2[]"></td>';
-            html += '<td><input type="text" name="frequency[]"></td>';
+            html += '<td><input type="text" name="frequency[]" onchange="addRowOnTab(this)"></td>';
             html += '<td><a id="removeRow" onclick="removeRow(' + sid + ')" class="btn waves-effect blue">' +
                 '<i class="material-icons">remove</i></a>';
             html += '    </td>';
@@ -365,7 +378,28 @@ $rMain = 2;
 
             $('select').formSelect();
 
-        })
+        });
+
+        $('#btnNew').click(function () {
+            $('#pumpNo').val('');
+            $('#inpassNo').val('');
+            $('#pumpNo').removeAttr('readonly');
+            $('#inpassNo').removeAttr('readonly');
+
+            $('input[name="pumpNo"]').val('');
+            $('input[name="inpassNo"]').val('');
+            $('input[name="pumpNo"]').removeAttr('readonly');
+            $('input[name="inpassNo"]').removeAttr('readonly');
+        });
+
+        function addRowOnTab(e) {
+            if ($(e).val().toString().length > 0) {
+                console.log();
+                if ($('input[name="discharge[]"]').last().val() != 0) {
+                    $('#addRow').click();                    
+                }
+            }
+        }
 
         $('#btnGraph').click(function() {
 
